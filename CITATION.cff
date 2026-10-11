@@ -13,6 +13,14 @@ authors:
   - family-names: Say
     given-names: Jeremiah
     affiliation: "GreenCalculus"
+doi: "10.5281/zenodo.23290085"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23290085"
+    description: "Concept DOI (always the latest version)"
+  - type: doi
+    value: "10.5281/zenodo.23290086"
+    description: "Version 2026.10.11"
 version: "2026.10.11"
 date-released: "2026-10-11"
 url: "https://greencalculus.com/data/data-center-water-usage/"

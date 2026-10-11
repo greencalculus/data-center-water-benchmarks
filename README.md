@@ -1,5 +1,7 @@
 # Data Center Water Benchmarks
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23290085.svg)](https://doi.org/10.5281/zenodo.23290085)
+
 Publicly disclosed data center water figures, each traced to its publisher: water usage effectiveness (WUE) by operator and region, and yearly water withdrawal, discharge and consumption by site.
 
 - **71 rows** from 6 publishers: Google (water by data center location, 2025: 40 named sites, other sites and the total), Amazon Web Services (global and 17 cloud regions, 2025), Microsoft (global and 3 regions, FY24 and FY25), Equinix and Digital Realty (portfolio WUE, 2025), and the European Commission (EU average WUE, 2024).
@@ -36,6 +38,6 @@ Interactive version with a data center water calculator: https://greencalculus.c
 
 The compilation is released under **CC BY 4.0**. The figures are facts published by the organisations named in each row; cite them as well as this dataset.
 
-Cite as: Say, J. (2026). *Data Center Water Benchmarks* (Version 2026.10.11) [Data set]. GreenCalculus.
+Cite as: Say, J. (2026). *Data Center Water Benchmarks* (Version 2026.10.11) [Data set]. GreenCalculus. https://doi.org/10.5281/zenodo.23290086
 
 Corrections: open an issue on this repository with the row id and the source.
