@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below, and cite the original publisher of any figure you use."
+type: dataset
+title: "Data Center Water Benchmarks"
+abstract: >
+  Publicly disclosed data center water figures, each traced to its publisher: Google's 2025 water
+  withdrawal, discharge and consumption by data center location; water usage effectiveness (WUE) for
+  AWS (global and cloud regions, 2025), Microsoft (global and regions, FY24 and FY25), Equinix and
+  Digital Realty (portfolios, 2025); and the European Commission's 2024 EU average WUE from Energy
+  Efficiency Directive reporting. Values copied exactly as published, with source URL, period and
+  retrieval date for every row.
+authors:
+  - family-names: Say
+    given-names: Jeremiah
+    affiliation: "GreenCalculus"
+version: "2026.10.11"
+date-released: "2026-10-11"
+url: "https://greencalculus.com/data/data-center-water-usage/"
+repository-code: "https://github.com/greencalculus/data-center-water-benchmarks"
+license: CC-BY-4.0
+keywords:
+  - data center water usage
+  - water usage effectiveness
+  - WUE
+  - data centres
+  - water footprint
+  - benchmarks
