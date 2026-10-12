@@ -17,11 +17,13 @@ import pathlib
 
 HERE = pathlib.Path(__file__).parent
 RETRIEVED = "2026-10-11"
+RETRIEVED_AI = "2026-10-12"
 L_PER_GAL = 3.785411784
 
 FIELDS = ["id", "publisher", "metric", "scope", "facility_or_region", "country", "period",
           "wue_l_per_kwh", "withdrawal_million_gal", "discharge_million_gal", "consumption_million_gal",
-          "consumption_million_litres", "source_title", "source_url", "source_date", "retrieved", "notes"]
+          "consumption_million_litres", "source_title", "source_url", "source_date", "retrieved", "notes",
+          "energy_wh_per_prompt", "water_ml_per_prompt", "water_million_litres", "water_scope"]
 
 GOOGLE_URL = "https://sustainability.google/files/google-2026-environmental-report.pdf"
 GOOGLE_TITLE = "Google 2026 Environmental Report (FY2025), table 'Water use by data center location'"
@@ -113,9 +115,47 @@ def rows():
         source_title="European Commission, COM(2026) 500 final, section 2.2.2 (21 Sep 2026)", source_url=ec, source_date="2026-09-21",
         notes="458 data centres with reliable WUE; sites reporting zero water (dry cooling) excluded; Member State averages 0.07 to 1.28. Climate Neutral Data Centre Pact target: 0.4 by 2040.")
 
+    # ── v2026.10.12: AI per-prompt and training water (read at source 2026-10-12) ──
+    g = "https://arxiv.org/abs/2508.15734"
+    gt = "Elsworth et al. (Google), Measuring the environmental impact of delivering AI at Google Scale, arXiv:2508.15734 (21 Aug 2025)"
+    li = "https://arxiv.org/abs/2304.03271"
+    lt = "Li, Yang, Islam and Ren, Making AI Less Thirsty, arXiv:2304.03271 v5 (26 Mar 2025), Table 1"
+    ai = dict(retrieved=RETRIEVED_AI)
+    add(publisher="Google", metric="wue", scope="fleet", facility_or_region="Global (as used for Gemini per-prompt water)", country="",
+        period="2023 and 2024", wue_l_per_kwh="1.15", source_title=gt, source_url=g, source_date="2025-08-21",
+        notes="'Google's WUE Category 2 value was 1.15 L/kWh' for 2023 and 2024; water consumption (evaporated, unavailable for reuse), not withdrawal.", **ai)
+    add(publisher="Google", metric="per_prompt", scope="median_prompt", facility_or_region="Gemini Apps, median text prompt (comprehensive approach)", country="",
+        period="May 2025", energy_wh_per_prompt="0.24", water_ml_per_prompt="0.26", water_scope="on-site cooling (consumption)",
+        source_title=gt + ", Table 2", source_url=g, source_date="2025-08-21",
+        notes="Boundary: active accelerators, host CPU and DRAM, idle provisioned machines, data center overhead. Excludes networking, end-user devices and training. Water = (energy minus overhead) x WUE; electricity-generation water not included. 0.03 gCO2e.", **ai)
+    add(publisher="Google", metric="per_prompt", scope="median_prompt", facility_or_region="Gemini Apps, median text prompt (existing, narrow approach)", country="",
+        period="May 2025", energy_wh_per_prompt="0.10", water_ml_per_prompt="0.12", water_scope="on-site cooling (consumption)",
+        source_title=gt + ", Table 2", source_url=g, source_date="2025-08-21",
+        notes="Active accelerator energy only. Table 2 gives 0.12 mL; the paper's text gives 0.15 mL for the same approach. The table value is used here.", **ai)
+    add(publisher="OpenAI", metric="per_prompt", scope="average_prompt", facility_or_region="ChatGPT, average query", country="",
+        period="2025", energy_wh_per_prompt="0.34", water_ml_per_prompt="0.32", water_scope="not stated",
+        source_title="Sam Altman, The Gentle Singularity (blog, 10 Jun 2025)", source_url="https://blog.samaltman.com/the-gentle-singularity", source_date="2025-06-10",
+        notes="'about 0.000085 gallons of water; roughly one fifteenth of a teaspoon' (= 0.32 mL); 'about 0.34 watt-hours'. No method, boundary or model published.", **ai)
+    add(publisher="Mistral AI", metric="per_prompt", scope="typical_response", facility_or_region="Le Chat, 400-token response (Mistral Large 2)", country="",
+        period="to Jan 2025", water_ml_per_prompt="45", water_scope="life cycle (includes server manufacturing; excludes user devices)",
+        source_title="Mistral AI, Our contribution to a global environmental standard for AI (22 Jul 2025)", source_url="https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai", source_date="2025-07-22",
+        notes="Marginal impact per response: 1.14 gCO2e, 45 mL water, 0.16 mg Sb eq. Study with Carbone 4 and ADEME, peer-reviewed by Resilio and Hubblo. Energy per response not published.", **ai)
+    add(publisher="Li et al. (UC Riverside, UT Arlington)", metric="per_prompt", scope="estimate", facility_or_region="GPT-3, medium-length response, Microsoft US average", country="US",
+        period="2023 assumptions", energy_wh_per_prompt="4", water_ml_per_prompt="16.904", water_scope="on-site cooling + electricity generation",
+        source_title=lt, source_url=li, source_date="2025-03-26",
+        notes="Assumed 4 Wh server energy per request; PUE 1.170, on-site WUE 0.550 L/kWh, electricity water 3.142 L/kWh: 2.200 mL on site + 14.704 mL off site; 29.6 requests per 500 mL. Locations in Table 1 range 7.107 (Ireland) to 47.506 mL (Washington), the source of the '10-50 responses per 500 mL bottle' figure.", **ai)
+    add(publisher="Li et al. (UC Riverside, UT Arlington)", metric="training", scope="estimate", facility_or_region="GPT-3 training, Microsoft US average", country="US",
+        period="2023 assumptions", water_million_litres="5.439", water_scope="on-site cooling + electricity generation",
+        source_title=lt, source_url=li, source_date="2025-03-26",
+        notes="0.708 million L on site + 4.731 million L off site. The actual training location is not public.", **ai)
+    add(publisher="Mistral AI", metric="training", scope="model_lifetime", facility_or_region="Mistral Large 2, training plus 18 months of use", country="",
+        period="to Jan 2025", water_million_litres="281", water_scope="life cycle (includes server manufacturing; excludes user devices)",
+        source_title="Mistral AI, Our contribution to a global environmental standard for AI (22 Jul 2025)", source_url="https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai", source_date="2025-07-22",
+        notes="281,000 cubic metres of water; 20.4 ktCO2e; 660 kg Sb eq. Training and inference are reported together.", **ai)
+
     for n, r in enumerate(out, 1):
         r["id"] = f"water-{n:04d}"
-        r["retrieved"] = RETRIEVED
+        r.setdefault("retrieved", RETRIEVED)
     return out
 
 
@@ -126,7 +166,7 @@ def main():
         w.writeheader()
         for r in data:
             w.writerow({k: r.get(k, "") for k in FIELDS})
-    (HERE / "data-center-water.json").write_text(json.dumps({"retrieved": RETRIEVED, "rows": data}, indent=1, ensure_ascii=False))
+    (HERE / "data-center-water.json").write_text(json.dumps({"retrieved": RETRIEVED_AI, "rows": data}, indent=1, ensure_ascii=False))
     print(f"{len(data)} rows")
 
 
