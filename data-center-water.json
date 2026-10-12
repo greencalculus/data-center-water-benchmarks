@@ -1,4 +1,5 @@
 {
+ "version": "2026.10.12.1",
  "retrieved": "2026-10-12",
  "rows": [
   {
@@ -1322,6 +1323,96 @@
    "notes": "281,000 cubic metres of water; 20.4 ktCO2e; 660 kg Sb eq. Training and inference are reported together.",
    "retrieved": "2026-10-12",
    "id": "water-0079"
+  },
+  {
+   "publisher": "Meta",
+   "metric": "wue",
+   "scope": "fleet",
+   "facility_or_region": "Owned data centers (annual)",
+   "country": "",
+   "period": "2024",
+   "wue_l_per_kwh": "0.19",
+   "source_title": "Meta 2025 Environmental Data Index, section 3 (Water), table 'Water Usage Effectiveness (WUE)'",
+   "source_url": "https://sustainability.atmeta.com/asset/2025-environmental-data-index",
+   "source_date": "2025",
+   "notes": "Meta: 'Annual WUE is calculated by dividing our water withdrawal, in liters, by IT electricity load, in kWh.'",
+   "retrieved": "2026-10-12",
+   "id": "water-0080"
+  },
+  {
+   "publisher": "Meta",
+   "metric": "wue",
+   "scope": "fleet",
+   "facility_or_region": "Owned data centers (annual)",
+   "country": "",
+   "period": "2023",
+   "wue_l_per_kwh": "0.18",
+   "source_title": "Meta 2025 Environmental Data Index, section 3 (Water), table 'Water Usage Effectiveness (WUE)'",
+   "source_url": "https://sustainability.atmeta.com/asset/2025-environmental-data-index",
+   "source_date": "2025",
+   "notes": "Meta: 'Annual WUE is calculated by dividing our water withdrawal, in liters, by IT electricity load, in kWh.'",
+   "retrieved": "2026-10-12",
+   "id": "water-0081"
+  },
+  {
+   "publisher": "Meta",
+   "metric": "wue",
+   "scope": "fleet",
+   "facility_or_region": "Owned data centers (annual)",
+   "country": "",
+   "period": "2022",
+   "wue_l_per_kwh": "0.20",
+   "source_title": "Meta 2025 Environmental Data Index, section 3 (Water), table 'Water Usage Effectiveness (WUE)'",
+   "source_url": "https://sustainability.atmeta.com/asset/2025-environmental-data-index",
+   "source_date": "2025",
+   "notes": "Meta: 'Annual WUE is calculated by dividing our water withdrawal, in liters, by IT electricity load, in kWh.'",
+   "retrieved": "2026-10-12",
+   "id": "water-0082"
+  },
+  {
+   "publisher": "Meta",
+   "metric": "wue",
+   "scope": "fleet",
+   "facility_or_region": "Owned data centers (annual)",
+   "country": "",
+   "period": "2021",
+   "wue_l_per_kwh": "0.26",
+   "source_title": "Meta 2025 Environmental Data Index, section 3 (Water), table 'Water Usage Effectiveness (WUE)'",
+   "source_url": "https://sustainability.atmeta.com/asset/2025-environmental-data-index",
+   "source_date": "2025",
+   "notes": "Meta: 'Annual WUE is calculated by dividing our water withdrawal, in liters, by IT electricity load, in kWh.'",
+   "retrieved": "2026-10-12",
+   "id": "water-0083"
+  },
+  {
+   "publisher": "Meta",
+   "metric": "wue",
+   "scope": "fleet",
+   "facility_or_region": "Owned data centers (annual)",
+   "country": "",
+   "period": "2020",
+   "wue_l_per_kwh": "0.30",
+   "source_title": "Meta 2025 Environmental Data Index, section 3 (Water), table 'Water Usage Effectiveness (WUE)'",
+   "source_url": "https://sustainability.atmeta.com/asset/2025-environmental-data-index",
+   "source_date": "2025",
+   "notes": "Meta: 'Annual WUE is calculated by dividing our water withdrawal, in liters, by IT electricity load, in kWh.'",
+   "retrieved": "2026-10-12",
+   "id": "water-0084"
+  },
+  {
+   "publisher": "Meta",
+   "metric": "site_volume",
+   "scope": "fleet",
+   "facility_or_region": "All data centers",
+   "country": "",
+   "period": "2024",
+   "consumption_million_litres": "2974",
+   "source_title": "Meta 2025 Environmental Data Index, section 3 (Water), tables 3.1 'Water Withdrawal by Facility' and 3.2 'Water Consumption'",
+   "source_url": "https://sustainability.atmeta.com/asset/2025-environmental-data-index",
+   "source_date": "2025",
+   "notes": "Published in megalitres (= million litres), so the US-gallon columns are left empty. Data centers total 2024: withdrawal 4,145 ML, consumption 2,974 ML (company total 5,637 and 3,123). Excludes 1,019 ML withdrawn for data center construction.",
+   "retrieved": "2026-10-12",
+   "id": "water-0085"
   }
  ]
 }

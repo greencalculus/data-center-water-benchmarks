@@ -6,7 +6,7 @@ abstract: >
   Publicly disclosed data center water figures, each traced to its publisher: Google's 2025 water
   withdrawal, discharge and consumption by data center location; water usage effectiveness (WUE) for
   AWS (global and cloud regions, 2025), Microsoft (global and regions, FY24 and FY25), Equinix and
-  Digital Realty (portfolios, 2025); and the European Commission's 2024 EU average WUE from Energy
+  Digital Realty (portfolios, 2025), Meta (2020 to 2024); and the European Commission's 2024 EU average WUE from Energy
   Efficiency Directive reporting; and water per AI prompt and per model trained from Google (Gemini),
   OpenAI (ChatGPT), Mistral AI and Li et al. Values copied exactly as published, with source URL,
   period, scope and retrieval date for every row.
@@ -25,7 +25,7 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.23290086"
     description: "Version 2026.10.11"
-version: "2026.10.12"
+version: "2026.10.12.1"
 date-released: "2026-10-12"
 url: "https://greencalculus.com/data/data-center-water-usage/"
 repository-code: "https://github.com/greencalculus/data-center-water-benchmarks"

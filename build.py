@@ -18,6 +18,7 @@ import pathlib
 HERE = pathlib.Path(__file__).parent
 RETRIEVED = "2026-10-11"
 RETRIEVED_AI = "2026-10-12"
+VERSION = "2026.10.12.1"
 L_PER_GAL = 3.785411784
 
 FIELDS = ["id", "publisher", "metric", "scope", "facility_or_region", "country", "period",
@@ -153,6 +154,18 @@ def rows():
         source_title="Mistral AI, Our contribution to a global environmental standard for AI (22 Jul 2025)", source_url="https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai", source_date="2025-07-22",
         notes="281,000 cubic metres of water; 20.4 ktCO2e; 660 kg Sb eq. Training and inference are reported together.", **ai)
 
+    # ── v2026.10.12.1: Meta (read at source 2026-10-12; replaces the earlier "no Meta row" note, which was wrong) ──
+    mu = "https://sustainability.atmeta.com/asset/2025-environmental-data-index"
+    mt = "Meta 2025 Environmental Data Index, section 3 (Water)"
+    for yr, v in [("2024", "0.19"), ("2023", "0.18"), ("2022", "0.20"), ("2021", "0.26"), ("2020", "0.30")]:
+        add(publisher="Meta", metric="wue", scope="fleet", facility_or_region="Owned data centers (annual)", country="", period=yr,
+            wue_l_per_kwh=v, source_title=mt + ", table 'Water Usage Effectiveness (WUE)'", source_url=mu, source_date="2025",
+            notes="Meta: 'Annual WUE is calculated by dividing our water withdrawal, in liters, by IT electricity load, in kWh.'", **ai)
+    add(publisher="Meta", metric="site_volume", scope="fleet", facility_or_region="All data centers", country="", period="2024",
+        consumption_million_litres="2974", source_title=mt + ", tables 3.1 'Water Withdrawal by Facility' and 3.2 'Water Consumption'",
+        source_url=mu, source_date="2025",
+        notes="Published in megalitres (= million litres), so the US-gallon columns are left empty. Data centers total 2024: withdrawal 4,145 ML, consumption 2,974 ML (company total 5,637 and 3,123). Excludes 1,019 ML withdrawn for data center construction.", **ai)
+
     for n, r in enumerate(out, 1):
         r["id"] = f"water-{n:04d}"
         r.setdefault("retrieved", RETRIEVED)
@@ -166,7 +179,7 @@ def main():
         w.writeheader()
         for r in data:
             w.writerow({k: r.get(k, "") for k in FIELDS})
-    (HERE / "data-center-water.json").write_text(json.dumps({"retrieved": RETRIEVED_AI, "rows": data}, indent=1, ensure_ascii=False))
+    (HERE / "data-center-water.json").write_text(json.dumps({"version": VERSION, "retrieved": RETRIEVED_AI, "rows": data}, indent=1, ensure_ascii=False))
     print(f"{len(data)} rows")
 
 
