@@ -18,7 +18,7 @@ import pathlib
 HERE = pathlib.Path(__file__).parent
 RETRIEVED = "2026-10-11"
 RETRIEVED_AI = "2026-10-12"
-VERSION = "2026.10.12.1"
+VERSION = "2026.10.22"
 L_PER_GAL = 3.785411784
 
 FIELDS = ["id", "publisher", "metric", "scope", "facility_or_region", "country", "period",
@@ -165,6 +165,13 @@ def rows():
         consumption_million_litres="2974", source_title=mt + ", tables 3.1 'Water Withdrawal by Facility' and 3.2 'Water Consumption'",
         source_url=mu, source_date="2025",
         notes="Published in megalitres (= million litres), so the US-gallon columns are left empty. Data centers total 2024: withdrawal 4,145 ML, consumption 2,974 ML (company total 5,637 and 3,123). Excludes 1,019 ML withdrawn for data center construction.", **ai)
+
+    # ── v2026.10.22: Microsoft per query (read at source 2026-10-22) ──
+    add(publisher="Microsoft", metric="per_prompt", scope="estimate", facility_or_region="Typical query, frontier-scale models (modelled by Microsoft researchers; not Copilot-specific)", country="",
+        period="2026", energy_wh_per_prompt="0.31", water_ml_per_prompt="0.067", water_scope="on-site (data center)",
+        source_title="Microsoft Cloud blog, Scaling AI with 8 to 20x energy efficiency (15 Jun 2026); Oviedo et al., Joule (Apr 2026), doi:10.1016/j.joule.2026.102430",
+        source_url="https://www.microsoft.com/en-us/microsoft-cloud/blog/2026/06/15/scaling-ai-with-8-to-20x-energy-efficiency/", source_date="2026-06-15",
+        notes="'a typical query uses in the range of 0.0 to 0.067 mL of water'; the upper end is given here. Energy: modelled median 0.31 Wh (interquartile range 0.16 to 0.60 Wh) from the Joule paper; long reasoning responses use more than 10x as much. Added in v2026.10.22.", retrieved="2026-10-22")
 
     for n, r in enumerate(out, 1):
         r["id"] = f"water-{n:04d}"
